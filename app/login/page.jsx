@@ -1,8 +1,10 @@
 "use client";
 import axios from "axios";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 const login = () => {
+    const router = useRouter();
     const [user, setUser] = useState({ email: "", password: "" });
 
     const [disabled, setAsDisable] = useState(false);
@@ -18,7 +20,8 @@ const login = () => {
     const onLogin = async () => {
         try {
             const response = await axios.post("/api/users/login", user);
-            console.log(response);
+            console.log("login is successful", response.data);
+            router.push("/home");
         } catch (error) {
             console.error(error);
             console.log("login is failed");
@@ -50,7 +53,7 @@ const login = () => {
                     <input
                         className="rounded-lg p-1 pl-2 m-1"
                         type="password"
-                        ame="password"
+                        name="password"
                         placeholder="password"
                         value={user.password}
                         onChange={(e) => {
