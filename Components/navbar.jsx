@@ -16,10 +16,15 @@ const Navbar = () => {
                             <Link href={"/signup"}>SignUp</Link>
                         </div>
                     </div>
+                    {/* <div className="flex my-3 mx-8 text-2xl">
+                        <div className="mx-3">
+                            <Link href={"/login"}>Logout</Link>
+                        </div>
+                    </div> */}
                 </nav>
             </div>
         </div>
     );
-}
+};
 
 export default Navbar;
