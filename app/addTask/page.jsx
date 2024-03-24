@@ -1,6 +1,25 @@
-import React from "react";
+"use client";
+
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 
 const addTask = () => {
+    const [task, setTask] = useState({ title: "", body: "" });
+    const [disable, setDisabled] = useState(false);
+
+    useEffect(() => {
+        if (task.title.length > 0 && task.body.length > 0) {
+            setDisabled(false);
+        } else {
+            setDisabled(true);
+        }
+    });
+
+    const onAddTask = () => {
+        // const response = await axios.post("/api/addTask", task);
+        console.log(task);
+    };
+
     return (
         <div>
             <div className="flex flex-col justify-center items-center min-h-screen text-lg ">
@@ -15,10 +34,10 @@ const addTask = () => {
                         type="title"
                         name="title"
                         placeholder="title"
-                        // value={user.title}
-                        // onChange={(e) => {
-                        //     setUser({ ...user, title: e.target.value });
-                        // }}
+                        value={task.title}
+                        onChange={(e) => {
+                            setTask({ ...task, title: e.target.value });
+                        }}
                     />
                     <label htmlFor="body" className="pl-2 mt-2">
                         body
@@ -29,18 +48,18 @@ const addTask = () => {
                         type="body"
                         name="body"
                         placeholder="body"
-                        // value={user.body}
-                        // onChange={(e) => {
-                        //     setUser({ ...user, body: e.target.value });
-                        // }}
+                        value={task.body}
+                        onChange={(e) => {
+                            setTask({ ...task, body: e.target.value });
+                        }}
                     />
                 </div>
                 <button
                     type="submit"
-                    // onClick={onLogin}
+                    onClick={onAddTask}
                     className="mt-2 px-3 py-1 bg-white rounded-lg text-black font-semibold"
                 >
-                    {/* {disabled ? "No Login" : "Login"} */}
+                    {disable ? "No AddTask" : "AddTask"}
                 </button>
             </div>
         </div>
