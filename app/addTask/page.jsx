@@ -15,9 +15,16 @@ const addTask = () => {
         }
     });
 
-    const onAddTask = () => {
-        // const response = await axios.post("/api/addTask", task);
-        console.log(task);
+    const onAddTask = async () => {
+        // const response = await axios.post("/api/users/addTask", task);
+        // console.log(response.data);
+        try {
+            const response = await axios.post("/api/users/addTask", task);
+            console.log("successful", response.data);
+            //router.push("/home");
+        } catch (error) {
+            console.log({ message: " failed", error: error });
+        }
     };
 
     return (
