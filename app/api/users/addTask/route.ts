@@ -7,8 +7,8 @@ connectDB();
 
 export async function POST(req: NextRequest) {
 
-    const value = req.cookies.get("token")?.value;
-    const data = jwt.verify(value, process.env.TOKEN);
+    const value = req.cookies.get("token")?.value!;
+    const data = jwt.verify(value, process.env.TOKEN!);
 
     try {
         const reqBody = await req.json();
@@ -21,11 +21,12 @@ export async function POST(req: NextRequest) {
         });
         await task.save();
         console.log(task);
-
+        console.log("Token value:", value);
         return NextResponse.json({
             message: "user is successfully!",
             success: true,
             task,
+            value
         });
     } catch (error: any) {
         return NextResponse.json(error);
