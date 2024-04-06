@@ -18,10 +18,11 @@ const login = () => {
     });
 
     const onLogin = async () => {
+        //e.preventDefault();
         try {
             const response = await axios.post("/api/users/login", user);
             console.log("login is successful", response.data);
-            router.push("/addTask");
+            router.push("/");
         } catch (error) {
             console.error(error);
             console.log("login is failed");

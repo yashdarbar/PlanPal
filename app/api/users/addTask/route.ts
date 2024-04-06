@@ -17,7 +17,7 @@ export async function POST(req: NextRequest) {
         const task = new Task({
             title,
             body,
-            userId: data._id
+            userId: data._id,
         });
         await task.save();
         console.log(task);

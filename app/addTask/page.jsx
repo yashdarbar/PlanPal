@@ -15,7 +15,8 @@ const addTask = () => {
         }
     });
 
-    const onAddTask = async () => {
+    const onAddTask = async (e) => {
+        e.preventDefault();
         // const response = await axios.post("/api/users/addTask", task);
         // console.log(response.data);
         try {
