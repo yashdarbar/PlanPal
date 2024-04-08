@@ -2,7 +2,7 @@
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { useContext, useEffect, useState } from "react";
-import UserContext from "@/context/userContext"
+import UserContext from "@/context/userContext";
 
 const login = () => {
     const router = useRouter();
@@ -22,10 +22,11 @@ const login = () => {
         //e.preventDefault();
         try {
             const response = await axios.post("/api/users/login", userl);
-            console.log("login is successful", response.data);
-            console.log("sfa",user);
-            setUser({...userl});
-            console.log("context", setUser(response.userl));
+            console.log("login is successful", response.data.user);
+            // console.log("sfa",user);
+            setUser({...response.data.user});
+            console.log("xyz",setUser(response.data.user));
+
             router.push("/");
         } catch (error) {
             console.error(error);
