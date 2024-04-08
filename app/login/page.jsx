@@ -1,16 +1,17 @@
 "use client";
 import axios from "axios";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import UserContext from "@/context/userContext"
 
 const login = () => {
     const router = useRouter();
-    const [user, setUser] = useState({ email: "", password: "" });
-
+    const [userl, setUserl] = useState({ email: "", password: "" });
+    const { user, setUser} = useContext(UserContext);
     const [disabled, setAsDisable] = useState(false);
 
     useEffect(() => {
-        if (user.email.length > 0 && user.password.length > 0) {
+        if (userl.email.length > 0 && userl.password.length > 0) {
             setAsDisable(false);
         } else {
             setAsDisable(true);
@@ -20,8 +21,11 @@ const login = () => {
     const onLogin = async () => {
         //e.preventDefault();
         try {
-            const response = await axios.post("/api/users/login", user);
+            const response = await axios.post("/api/users/login", userl);
             console.log("login is successful", response.data);
+            console.log("sfa",user);
+            setUser({...userl});
+            console.log("context", setUser(response.userl));
             router.push("/");
         } catch (error) {
             console.error(error);
@@ -43,9 +47,9 @@ const login = () => {
                         type="email"
                         name="email"
                         placeholder="email"
-                        value={user.email}
+                        value={userl.email}
                         onChange={(e) => {
-                            setUser({ ...user, email: e.target.value });
+                            setUserl({ ...userl, email: e.target.value });
                         }}
                     />
                     <label htmlFor="password" className="pl-2 mt-2">
@@ -56,9 +60,9 @@ const login = () => {
                         type="password"
                         name="password"
                         placeholder="password"
-                        value={user.password}
+                        value={userl.password}
                         onChange={(e) => {
-                            setUser({ ...user, password: e.target.value });
+                            setUserl({ ...userl, password: e.target.value });
                         }}
                     />
                 </div>
