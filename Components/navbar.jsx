@@ -1,10 +1,10 @@
 "use client";
 import Link from "next/link";
-// import { useContext } from "react";
-// import UserContext from "@context/userContext";
+import { useContext } from "react";
+import UserContext from "../context/userContext";
 
 const Navbar = () => {
-    // const { user } = useContext(UserContext);
+    const { user } = useContext(UserContext);
 
     return (
         <div className="min-h-full w-full">
@@ -13,7 +13,7 @@ const Navbar = () => {
                     <div className="text-3xl ml-10 my-3">
                         <Link href={"/"}>ToDo.</Link>
                     </div>
-                    {/* {!user && (
+                    {!user && (
                         <div className="flex my-3 mx-8 text-2xl">
                             <div className="mx-3">
                                 <Link href={"/login"}>Login</Link>
@@ -30,7 +30,7 @@ const Navbar = () => {
                                 <Link href={"/login"}>Logout</Link>
                             </div>
                         </div>
-                    )} */}
+                    )}
                 </nav>
             </div>
         </div>

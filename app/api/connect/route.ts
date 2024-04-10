@@ -3,25 +3,105 @@ import jwt from "jsonwebtoken";
 import  User from "@/models/userModels";
 import { NextRequest, NextResponse } from "next/server";
 
-export async function GET(req: NextRequest) {
 
+export async function GET(req: NextRequest) {
     connectDB();
 
     try {
         const getToken = req.cookies.get("token")?.value;
-        console.log(getToken);
-        const verifyToken = jwt.verify(getToken!, process.env.TOKEN!);
-        console.log(verifyToken);
-        // const user = await User.findById(verifyToken._id);
-        // console.log("lflsf",user);
-        return NextResponse.json(verifyToken);
-    } catch (error:any) {
-        console.log(error);
-        return NextResponse.json({error: error.message}, {status: 404});
+        console.log("ddd", getToken);
+        if (!getToken) {
+            throw new Error("Token not found in cookies.");
+        }
+
+        const verifyToken = jwt.verify(getToken, process.env.TOKEN!);
+        console.log("verifyToken", verifyToken);
+        if (!verifyToken || !verifyToken._id) {
+            throw new Error("Invalid token or _id not found in token payload.");
+        }
+
+        const user = await User.findById(verifyToken._id);
+        if (!user) {
+            throw new Error("User not found");
+        }
+
+        return NextResponse.json(user.toObject());
+    } catch (error: any) {
+        console.error("Error:", error);
+        return NextResponse.json({ error: error.message }, { status: 404 });
     }
 }
 
 // export async function GET(req: NextRequest) {
+//     connectDB();
+//     try {
+//         const getToken = req.cookies.get("token")?.value;
+//         if (!getToken) {
+//             throw new Error("Token not found in cookies.");
+//         }
+//         console.log(getToken);
+
+//         const verifyToken = jwt.verify(getToken, process.env.TOKEN!);
+//         if (!verifyToken || !verifyToken._id) {
+//             throw new Error("Invalid token or _id not found in token payload.");
+//         }
+
+//         const user = await User.findById(verifyToken._id);
+//         if (!user) {
+//             throw new Error("User not found");
+//         }
+
+//         return NextResponse.json({ _id: user._id, ...user.toObject() });
+//     } catch (error: any) {
+//         console.error("Error:", error);
+//         return NextResponse.json({ error: error.message }, { status: 404 });
+//     }
+// }
+
+// export async function GET(req: NextRequest) {
+//     connectDB();
+//     try {
+//         const getToken = req.cookies.get("token")?.value;
+
+//         if (!getToken) {
+//             throw new Error("Token not found in cookies.");
+//         }
+
+//         const verifyToken = jwt.verify(getToken, process.env.TOKEN!);
+
+//         if (!verifyToken || !verifyToken._id) {
+//             throw new Error("Invalid token or _id not found in token payload.");
+//         }
+
+//         const user = await User.findById(verifyToken._id);
+//         return NextResponse.json(user);
+//     } catch (error: any) {
+//         console.error("Error:", error);
+//         return NextResponse.json({ error: error.message }, { status: 404 });
+//     }
+// }
+
+
+
+// export async function GET(req: NextRequest, _id: String) {
+
+//     connectDB();
+
+//     try {
+//         const getToken = req.cookies.get("token")?.value;
+//         console.log(getToken);
+//         const verifyToken = jwt.verify(getToken!, process.env.TOKEN!);
+//         console.log(verifyToken);
+//         const user = await User.findById(verifyToken._id);
+//         console.log("lflsf",user);
+//         return NextResponse.json(verifyToken);
+//     } catch (error:any) {
+//         console.log(error);
+//         return NextResponse.json({error: error.message}, {status: 404});
+//     }
+// }
+
+// export async function GET(req: NextRequest, _id: Number) {
 //     connectDB();
 
 //     try {

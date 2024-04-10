@@ -16,23 +16,26 @@ const login = () => {
         } else {
             setAsDisable(true);
         }
-    });
+    }, [userl]);
 
     const onLogin = async () => {
         //e.preventDefault();
         try {
             const response = await axios.post("/api/users/login", userl);
-            console.log("login is successful", response.data.user);
-            // console.log("sfa",user);
-            setUser({...response.data.user});
-            console.log("xyz",setUser(response.data.user));
-
+            console.log("login is successful", response.data);
+            // console.log("hhh",user);
+            setUser(response.data);
+            // console.log("xyz",setUser(response.data));
             router.push("/");
         } catch (error) {
             console.error(error);
             console.log("login is failed");
         }
     };
+
+    // if (!user) {
+    //     return <div>Loading...</div>;
+    // }
 
     return (
         <div>
