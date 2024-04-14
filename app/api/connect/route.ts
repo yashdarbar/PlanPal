@@ -12,17 +12,17 @@ interface CustomJwtPayload extends JwtPayload {
 }
     try {
         const getToken = req.cookies.get("token")?.value;
-        console.log("ddd", getToken);
+        //console.log("ddd", getToken);
         if (!getToken) {
             throw new Error("Token not found in cookies.");
         }
         // crazzy thing learn at this point
         const verifyToken = jwt.verify(getToken, process.env.TOKEN! as Secret) as CustomJwtPayload;
-        console.log("verifyToken", verifyToken);
+        //console.log("verifyToken", verifyToken);
         if (!verifyToken || !verifyToken._id) {
             throw new Error("Invalid token or _id not found in token payload.");
         }
-        console.log("id", verifyToken._id);
+        //console.log("id", verifyToken._id);
         const user = await User.findById(verifyToken._id);
         if (!user) {
             throw new Error("User not found");

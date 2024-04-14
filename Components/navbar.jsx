@@ -2,9 +2,21 @@
 import Link from "next/link";
 import { useContext } from "react";
 import UserContext from "../context/userContext";
+import axios from "axios";
+import { useRouter } from "next/navigation";
 
 const Navbar = () => {
+    const router = useRouter()
     const { user } = useContext(UserContext);
+
+    const logout = async () => {
+        try {
+            await axios.get("/api/users/logout");
+            router.push("/login");
+        } catch (error) {
+            console.log(error.message);
+        }
+    }
 
     return (
         <div className="min-h-full w-full">
@@ -27,7 +39,9 @@ const Navbar = () => {
                     {user && (
                         <div className="flex my-3 mx-8 text-2xl">
                             <div className="mx-3">
-                                <Link href={"/login"}>Logout</Link>
+                                <button>
+                                    <h1 onClick={logout}>Logout</h1>
+                                </button>
                             </div>
                         </div>
                     )}

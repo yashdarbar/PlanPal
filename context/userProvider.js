@@ -14,7 +14,7 @@ const userProvider = ({ children }) => {
                 // setUser({ ...userv });
                 // console.log(user);
                 const response = await axios.get("/api/connect");
-                console.log(response.data._id);
+                //console.log(response.data._id);
                 setUser(response.data._id);
             } catch (error) {
                 console.error(error.message);
