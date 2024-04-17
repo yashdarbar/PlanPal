@@ -7,7 +7,8 @@ export function middleware(request: NextRequest) {
 
     const isPublicPath = path === "/login" || path === "/signup" || path === "/";
 
-    const token = request.cookies.get("token")?.value || "";
+    //const token = request.cookies.get("token")?.value || "";
+    const token = request.cookies.get("token")?.value;
 
     if (isPublicPath && token) {
         return NextResponse.redirect(new URL("/addTask", request.url));

@@ -21,7 +21,7 @@ export async function POST(req: NextRequest, _id: string) {
 
         const validPassword = await bcryptjs.compare(password, user.password);
         if (!validPassword) {
-            return NextResponse.json("Invalid password");
+            return NextResponse.json("Password is incorrect");
         }
 
         const tokenData = {
@@ -36,7 +36,7 @@ export async function POST(req: NextRequest, _id: string) {
         });
 
         const response = NextResponse.json({
-            message: "Login successful",
+            message: "Login is successful",
             success: true,
             user: user,
         });
