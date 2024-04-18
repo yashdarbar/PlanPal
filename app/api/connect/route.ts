@@ -1,15 +1,14 @@
 import { connectDB } from "@/dbconfig/dbconfig";
 import jwt, { type JwtPayload, type Secret } from "jsonwebtoken";
-import  User from "@/models/userModels";
+import User from "@/models/userModels";
 import { NextRequest, NextResponse } from "next/server";
 
-
-export async function GET(req: NextRequest, _id:string) {
+export async function GET(req: NextRequest, _id: string) {
     connectDB();
 
-interface CustomJwtPayload extends JwtPayload {
-    _id: string;
-}
+    interface CustomJwtPayload extends JwtPayload {
+        _id: string;
+    }
     try {
         const getToken = req.cookies.get("token")?.value;
         //console.log("ddd", getToken);
@@ -17,7 +16,10 @@ interface CustomJwtPayload extends JwtPayload {
             throw new Error("Token not found in cookies.");
         }
         // crazzy thing learn at this point
-        const verifyToken = jwt.verify(getToken, process.env.TOKEN! as Secret) as CustomJwtPayload;
+        const verifyToken = jwt.verify(
+            getToken,
+            process.env.TOKEN! as Secret
+        ) as CustomJwtPayload;
         //console.log("verifyToken", verifyToken);
         if (!verifyToken || !verifyToken._id) {
             throw new Error("Invalid token or _id not found in token payload.");
@@ -84,8 +86,6 @@ interface CustomJwtPayload extends JwtPayload {
 //     }
 // }
 
-
-
 // export async function GET(req: NextRequest, _id: String) {
 
 //     connectDB();
@@ -131,4 +131,3 @@ interface CustomJwtPayload extends JwtPayload {
 //         return NextResponse.json({ error: error.message }, { status: 404 });
 //     }
 // }
-

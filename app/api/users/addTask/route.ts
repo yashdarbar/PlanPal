@@ -1,14 +1,18 @@
 import { connectDB } from "@/dbconfig/dbconfig";
 import { NextRequest, NextResponse } from "next/server";
 import { Task } from "@/models/taskModels";
-import jwt from "jsonwebtoken";
+import jwt, { type JwtPayload, type Secret } from "jsonwebtoken";
 
 connectDB();
 
 export async function POST(req: NextRequest) {
 
+    interface CustomJwtPayload extends JwtPayload {
+        _id: string;
+    }
+
     const value = req.cookies.get("token")?.value!;
-    const data = jwt.verify(value, process.env.TOKEN!);
+    const data = jwt.verify(value, process.env.TOKEN! as Secret) as CustomJwtPayload; 
 
     try {
         const reqBody = await req.json();

@@ -22,7 +22,7 @@ const login = () => {
         //e.preventDefault();
         try {
             const response = await axios.post("/api/users/login", userl);
-            console.log("login is successful", response.data);
+            console.log(response.data);
             // console.log("hhh",user);
             setUser(response.data);
             // console.log("xyz",setUser(response.data));
