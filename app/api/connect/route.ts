@@ -29,8 +29,9 @@ export async function GET(req: NextRequest, _id: string) {
         if (!user) {
             throw new Error("User not found");
         }
-
+        //console.log("User", user);
         return NextResponse.json(user.toObject());
+
     } catch (error: any) {
         console.error("Error:", error);
         return NextResponse.json({ error: error.message }, { status: 404 });

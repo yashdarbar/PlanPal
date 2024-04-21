@@ -33,10 +33,6 @@ const login = () => {
         }
     };
 
-    // if (!user) {
-    //     return <div>Loading...</div>;
-    // }
-
     return (
         <div>
             <div className="flex flex-col justify-center items-center min-h-screen text-lg">
