@@ -1,8 +1,40 @@
 "use client";
 import React from "react";
+import { useContext, useState } from "react";
+import UserContext from "@/context/userContext";
+import axios from "axios";
+import Tassk from "./Tassk";
+
 
 const showTask = () => {
-    return <div></div>;
+
+    const { user } = useContext(UserContext);
+    const [tasks, setTasks] = useState();
+
+    const getTask = async (userId) => {
+        try {
+            const response = await axios.get(`api/users/${userId}/tasks`);
+            setTasks([...response]).reverse();
+        } catch (error) {
+            console.error(error);
+        }
+
+        console.log(
+            "data",
+            user
+        )
+    }
+
+    if (user) {
+        getTask(user);
+    }
+
+    return <div>
+            {/* <h1> tasks</h1>
+            <div>
+                {tasks.map(task => (<Tassk task={task} key={task.id}></Tassk>))}
+            </div> */}
+    </div>;
 };
 
 export default showTask;
