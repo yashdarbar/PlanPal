@@ -16,6 +16,7 @@ const showTask = () => {
             const response = await axios.get(`/api/users/${userId}/task`);
             console.log("eorroro", response);
             setTasks([...response.data].reverse());
+
         } catch (error) {
             console.error(error);
         }
@@ -29,14 +30,23 @@ const showTask = () => {
     }, [user]);
 
     return (
-        <div>
-            <h1>tasks</h1>
-            <div>
+        <div className="">
+            <h1 className="text-center text-3xl font-semibold">Tasks</h1>
+            <div className="flex flex-col mx-auto text-center w-fit  bg-black text-black mt-8">
                 {tasks.map((task) => (
                     <Tassk task={task} key={task.id}></Tassk>
                 ))}
             </div>
         </div>
+        // <div className="flex flex-col w-full">
+        //     <h1 className="justify-center flex">tasks</h1>
+        //     <div className="">
+        //         {tasks.map((task) => (
+        //             <Tassk task={task} key={task._id}></Tassk>
+        //         ))}
+        //         <Tassk></Tassk>
+        //     </div>
+        // </div>
     );
 };
 

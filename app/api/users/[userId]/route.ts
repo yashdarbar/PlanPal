@@ -11,7 +11,7 @@ export const GET = async (
     { params }: { params: { userId: string } }
 ) => {
     const { userId } = params;
-    console.log("lllljfl",userId);
+    console.log("lllljfl", userId);
     try {
         const user = await User.findById({ _id: userId });
         return NextResponse.json(user);
@@ -22,7 +22,7 @@ export const GET = async (
         // Create a more descriptive error object
         const errorResponse = {
             message: "Failed to fetch user",
-            details:error instanceof Error ? error.message : "Unknown error",
+            details: error instanceof Error ? error.message : "Unknown error",
         };
 
         return NextResponse.json(errorResponse, { status: 500 });
@@ -57,7 +57,6 @@ export const config = {
 //     runtime: "edge",
 // };
 
-
 // export default async function GET(
 //     request: Request,
 //     { params }: { params: { userId: string } }
@@ -77,4 +76,3 @@ export const config = {
 //         });
 //     }
 // }
-
