@@ -1,21 +1,20 @@
 "use client"
 
-
 import axios from 'axios';
 import React from 'react'
 
 const Tassk = ({task, key}) => {
 
-  const deleteHandler = () => {
+  // const deleteHandler = () => {
 
-  }
+  // }
 
   const onDeleteTask = async (taskId) => {
       //e.preventDefault();
       // const response = await axios.post("/api/users/addTask", task);
       console.log("a;lskdjfalsd", taskId);
       try {
-          const response = await axios.post(`/api/addTask/${taskId}`);
+          const response = await axios.delete(`/api/users/addTask/${taskId}`);
           console.log("successful", response.data);
           //router.push("/home");
       } catch (error) {
