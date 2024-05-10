@@ -18,7 +18,7 @@ export const GET = async (
     } catch (error) {
         // Log the error for debugging purposes
         console.error("Error fetching tasks:", error);
-
+        
         // Create a more descriptive error object
         const errorResponse = {
             message: "Failed to fetch tasks",

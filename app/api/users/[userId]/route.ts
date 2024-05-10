@@ -29,6 +29,15 @@ export const GET = async (
     }
 };
 
+
+
+// export const DELETE = async () => {
+//     try {
+//         const deleteTask = await Task.findById
+//     } catch (error) {
+//         console.error(error, "Error deleting");
+//     }
+// }
 export const config = {
     runtime: "edge",
 };

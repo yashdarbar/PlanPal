@@ -38,6 +38,11 @@ const Navbar = () => {
 
                     {user && (
                         <div className="flex my-3 mx-8 text-2xl">
+                            {/* <div className="mx-3">
+                                <button>
+                                    <Link onClick={"/showTask"}>Show Task</Link>
+                                </button>
+                            </div> */}
                             <div className="mx-3">
                                 <button>
                                     <h1 onClick={logout}>Logout</h1>
