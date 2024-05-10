@@ -38,6 +38,19 @@ const Navbar = () => {
 
                     {user && (
                         <div className="flex my-3 mx-8 text-2xl">
+                            <div className="mx-3">
+                                        <Link href={"/showTask"}>
+                                            Show Task
+                                        </Link>
+                            </div>
+                            <div className="mx-3">
+                                        <Link href={"/addTask"}>Add Task</Link>
+                            </div>
+                        </div>
+                    )}
+
+                    {user && (
+                        <div className="flex my-3 mx-8 text-2xl">
                             {/* <div className="mx-3">
                                 <button>
                                     <Link onClick={"/showTask"}>Show Task</Link>
