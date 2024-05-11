@@ -33,7 +33,7 @@ const signup = () => {
 
     return (
         <div className="flex flex-col justify-center items-center min-h-screen text-lg">
-            <h1 className="font-semibold">SignUp!</h1>
+            <h1 className="font-semibold text-lg sm:text-xl">SignUp!</h1>
             <hr />
             <div className="flex flex-col ">
                 <label htmlFor="username" className="pl-2 mt-2">
@@ -79,7 +79,7 @@ const signup = () => {
             <button
                 type="submit"
                 onClick={onSignup}
-                className="mt-2 px-3 py-1 bg-white rounded-lg text-black font-semibold"
+                className="mt-2 px-3 py-1 bg-white rounded-lg text-base sm:text-lg text-black font-semibold"
             >
                 {disabled ? "No SignUp" : "SignUp"}
             </button>
