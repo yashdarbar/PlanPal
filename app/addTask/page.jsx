@@ -24,7 +24,6 @@ const addTask = () => {
         try {
             const response = await axios.post("/api/users/addTask", task);
             console.log("successful", response.data);
-            //router.push("/home");
         } catch (error) {
             console.log({ message: " failed", error: error });
         }

@@ -11,13 +11,13 @@ export async function POST(req: NextRequest, _id: string) {
     try {
         const reqbody = await req.json();
         const { email, password } = reqbody;
-        console.log(reqbody);
+        //console.log(reqbody);
 
         const user = await User.findOne({ email });
         if (!user) {
             return NextResponse.json("User not found");
         }
-        console.log("user exists", user);
+        //console.log("user exists", user);
 
         const validPassword = await bcryptjs.compare(password, user.password);
         if (!validPassword) {

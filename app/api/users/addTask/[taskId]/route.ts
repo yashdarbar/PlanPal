@@ -6,7 +6,7 @@ connectDB();
 
 export const DELETE = async (req: Request, {params} : {params: {taskId: string}}) => {
     const {taskId} = params;
-    console.log(taskId);
+    //console.log(taskId);
     try {
         await Task.deleteOne({_id: taskId});
         return NextResponse.json({

@@ -14,7 +14,7 @@ const showTask = () => {
         //console.log(userId);
         try {
             const response = await axios.get(`/api/users/${userId}/task`);
-            console.log("eorroro", response);
+            //console.log("eorroro", response);
             setTasks([...response.data].reverse());
 
         } catch (error) {
