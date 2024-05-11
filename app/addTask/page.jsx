@@ -5,7 +5,7 @@ import axios from "axios";
 
 const addTask = () => {
 
-    
+
     const [task, setTask] = useState({ title: "", body: "" });
     const [disable, setDisabled] = useState(false);
 
@@ -35,7 +35,7 @@ const addTask = () => {
             <div className="flex flex-col justify-center items-center min-h-screen text-lg ">
                 <h1 className="font-semibold">Task!</h1>
                 <hr />
-                <div className="flex flex-col w-1/4">
+                <div className="flex flex-col w-2/3 sm:w-3/5 md:w-2/6">
                     <label htmlFor="title" className="pl-2 mt-2">
                         title
                     </label>
@@ -67,7 +67,7 @@ const addTask = () => {
                 <button
                     type="submit"
                     onClick={onAddTask}
-                    className="mt-2 px-3 py-1 bg-white rounded-lg text-black font-semibold"
+                    className="mt-2 px-3 py-1 bg-white text-base sm:text-lg rounded-lg text-black font-semibold"
                 >
                     {disable ? "No AddTask" : "AddTask"}
                 </button>
