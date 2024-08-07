@@ -4,7 +4,7 @@ import { NextResponse } from "next/server";
 
 connectDB();
 
-export const dynamic = "force-dynamic";
+export const dynamic = "auto"
 
 export const GET = async (
     request: Request,
