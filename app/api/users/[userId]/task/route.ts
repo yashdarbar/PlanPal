@@ -4,7 +4,7 @@ import { NextResponse } from "next/server";
 
 connectDB();
 
-export const dynamic = "auto"
+export const dynamic = "auto";
 
 export const GET = async (
     request: Request,
@@ -29,7 +29,7 @@ export const GET = async (
     }
 };
 
-export const runtime = "edge"
+export const runtime = "edge";
 
 // connectDB();
 
