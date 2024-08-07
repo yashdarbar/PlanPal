@@ -31,7 +31,7 @@ export const GET = async (
 
 
 
-export const runtime = "edge";
+export const runtime = "nodejs";
 
 // export const GET = async (
 //     request: Request,

@@ -18,5 +18,4 @@ export const DELETE = async (req: Request, {params} : {params: {taskId: string}}
     }
 };
 
-
-export const runtime = "edge";
+export const runtime = "nodejs";
