@@ -18,6 +18,6 @@ export const DELETE = async (req: Request, {params} : {params: {taskId: string}}
     }
 };
 
-export const config = {
-    runtime: "edge",
-};
+// export const config = {
+//     runtime: "edge",
+// };
