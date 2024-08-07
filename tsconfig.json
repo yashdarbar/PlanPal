@@ -27,7 +27,7 @@
         "**/*.tsx",
         ".next/types/**/*.ts",
         "app/signup/page.jsx",
-        "components/navbar.jsx"
+        "components/navbar.js"
     ],
     "exclude": ["node_modules"]
 }
