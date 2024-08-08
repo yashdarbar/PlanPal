@@ -3,9 +3,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
-const addTask = () => {
-
-
+export const AddTask = () => {
     const [task, setTask] = useState({ title: "", body: "" });
     const [disable, setDisabled] = useState(false);
 
@@ -15,12 +13,10 @@ const addTask = () => {
         } else {
             setDisabled(true);
         }
-    });
+    }, [task]);
 
     const onAddTask = async (e) => {
         e.preventDefault();
-        // const response = await axios.post("/api/users/addTask", task);
-        // console.log(response.data);
         try {
             const response = await axios.post("/api/users/addTask", task);
             console.log("successful", response.data);
@@ -54,7 +50,6 @@ const addTask = () => {
                     <textarea
                         rows={4}
                         className="rounded-lg p-1 pl-2 m-1"
-                        type="body"
                         name="body"
                         placeholder="body"
                         value={task.body}
@@ -66,6 +61,7 @@ const addTask = () => {
                 <button
                     type="submit"
                     onClick={onAddTask}
+                    disabled={disable}
                     className="mt-2 px-3 py-1 bg-white text-base sm:text-lg rounded-lg text-black font-semibold"
                 >
                     {disable ? "No AddTask" : "AddTask"}
@@ -75,4 +71,3 @@ const addTask = () => {
     );
 };
 
-export default addTask;
