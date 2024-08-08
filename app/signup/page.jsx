@@ -1,9 +1,10 @@
 "use client";
+
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 
-const signup = () => {
+const Signup = () => {
     const router = useRouter();
     const [user, setUser] = useState({ username: "", email: "", password: "" });
 
@@ -19,7 +20,7 @@ const signup = () => {
         } else {
             setAsDisable(true);
         }
-    });
+    }, []);
 
     const onSignup = async () => {
         try {
@@ -35,7 +36,7 @@ const signup = () => {
         <div className="flex flex-col justify-center items-center min-h-screen text-lg">
             <h1 className="font-semibold text-lg sm:text-xl">SignUp!</h1>
             <hr />
-            <div className="flex flex-col ">
+            <form className="flex flex-col " onSubmit={onSignup}>
                 <label htmlFor="username" className="pl-2 mt-2">
                     username
                 </label>
@@ -75,11 +76,12 @@ const signup = () => {
                         setUser({ ...user, password: e.target.value });
                     }}
                 />
-            </div>
+            </form>
             <button
                 type="submit"
                 onClick={onSignup}
-                className="mt-2 px-3 py-1 bg-white rounded-lg text-base sm:text-lg text-black font-semibold"
+                className="w-40 mt-2 px-3 py-1 bg-white rounded-lg text-base sm:text-lg text-black font-semibold"
+                disabled={disabled}
             >
                 {disabled ? "No SignUp" : "SignUp"}
             </button>
@@ -87,4 +89,4 @@ const signup = () => {
     );
 };
 
-export default signup;
+export default Signup;
