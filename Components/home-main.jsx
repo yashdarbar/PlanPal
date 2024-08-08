@@ -4,7 +4,7 @@ import UserContext from "@/context/userContext";
 import Link from "next/link";
 import { useContext } from "react";
 
-const Home = () => {
+export const HomeMain = () => {
     const { user } = useContext(UserContext);
 
     return (
@@ -23,4 +23,3 @@ const Home = () => {
     );
 };
 
-export default Home;

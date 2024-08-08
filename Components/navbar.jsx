@@ -1,11 +1,12 @@
 "use client";
+
 import Link from "next/link";
 import { useContext } from "react";
 import UserContext from "../context/userContext";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 
-const Navbar = () => {
+export const Navbar = () => {
     const router = useRouter()
     const { user } = useContext(UserContext);
 
@@ -14,7 +15,7 @@ const Navbar = () => {
             await axios.get("/api/users/logout");
             router.push("/login");
         } catch (error) {
-            console.log(error.message);
+            console.log(error);
         }
     }
 
@@ -67,4 +68,3 @@ const Navbar = () => {
     );
 };
 
-export default Navbar;
