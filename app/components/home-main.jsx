@@ -14,12 +14,11 @@ export const HomeMain = () => {
                     MAKE DAY PRODUCTIVE BY TAKING TRACK OF YOUR TODO's
                 </h2>
                 {user && (
-                    <h1 className="mt-2 px-3 py-1 bg-white rounded-lg text-black font-semibold">
+                    <div className="mt-2 px-3 py-1 bg-white rounded-lg text-black font-semibold">
                         <Link href={"/addTask"}>Add Task</Link>
-                    </h1>
+                    </div>
                 )}
             </div>
         </div>
     );
 };
-

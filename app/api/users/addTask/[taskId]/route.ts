@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { connectDB } from "@/dbconfig/dbconfig";
-import { Task } from "@/models/taskModels";
+import  Task  from "@/models/taskModels";
 
 connectDB();
 

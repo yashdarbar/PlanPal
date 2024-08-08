@@ -4,7 +4,7 @@ import UserContext from "./userContext";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-const userProvider = ({ children }) => {
+const UserProvider = ({ children }) => {
     const [user, setUser] = useState(undefined);
 
     useEffect(() => {
@@ -30,4 +30,4 @@ const userProvider = ({ children }) => {
     );
 };
 
-export default userProvider;
+export default UserProvider;

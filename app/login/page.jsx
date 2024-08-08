@@ -1,10 +1,11 @@
 "use client";
+
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { useContext, useEffect, useState } from "react";
 import UserContext from "@/context/userContext";
 
-const login = () => {
+const Login = () => {
     const router = useRouter();
     const [userl, setUserl] = useState({ email: "", password: "" });
     const { user, setUser} = useContext(UserContext);
@@ -18,15 +19,13 @@ const login = () => {
         }
     }, [userl]);
 
-    const onLogin = async () => {
-        //e.preventDefault();
+    const onLogin = async (e) => {
+        e.preventDefault();
         try {
             const response = await axios.post("/api/users/login", userl);
             console.log(response.data);
-            // console.log("hhh",user);
             setUser(response.data);
-            // console.log("xyz",setUser(response.data));
-            router.push("/");
+            router.push("/addTask");
         } catch (error) {
             console.error(error);
             console.log("login is failed");
@@ -38,7 +37,7 @@ const login = () => {
             <div className="flex flex-col justify-center items-center min-h-screen text-lg">
                 <h1 className="font-semibold text-lg sm:text-xl">Login!</h1>
                 <hr />
-                <div className="flex flex-col ">
+                <form className="flex flex-col" onSubmit={onLogin}>
                     <label htmlFor="email" className="pl-2 mt-2">
                         email
                     </label>
@@ -65,11 +64,12 @@ const login = () => {
                             setUserl({ ...userl, password: e.target.value });
                         }}
                     />
-                </div>
+                </form>
                 <button
                     type="submit"
                     onClick={onLogin}
-                    className="mt-2 px-3 py-1 bg-white rounded-lg text-base sm:text-lg text-black font-semibold"
+                    className="w-40 mt-2 px-3 py-1 bg-white rounded-lg text-base sm:text-lg text-black font-semibold"
+                    disabled={disabled}
                 >
                     {disabled ? "No Login" : "Login"}
                 </button>
@@ -78,4 +78,4 @@ const login = () => {
     );
 };
 
-export default login;
+export default Login;

@@ -1,5 +1,5 @@
 import { connectDB } from "@/dbconfig/dbconfig";
-import { Task } from "@/models/taskModels";
+import Task from "@/models/taskModels";
 import { NextResponse } from "next/server";
 
 connectDB();
@@ -13,7 +13,7 @@ export const GET = async (
     const { userId } = params;
 
     try {
-        const tasks = await Task.find({ userId });
+        const tasks = await Task.find({ _id:userId });
         return NextResponse.json(tasks);
     } catch (error) {
         // Log the error for debugging purposes

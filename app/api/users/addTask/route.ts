@@ -1,6 +1,6 @@
 import { connectDB } from "@/dbconfig/dbconfig";
 import { NextRequest, NextResponse } from "next/server";
-import { Task } from "@/models/taskModels";
+import  Task  from "@/models/taskModels";
 import jwt, { type JwtPayload, type Secret } from "jsonwebtoken";
 
 connectDB();

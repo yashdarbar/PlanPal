@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
-export const AddTask = () => {
+const AddTask = () => {
     const [task, setTask] = useState({ title: "", body: "" });
     const [disable, setDisabled] = useState(false);
 
@@ -71,3 +71,4 @@ export const AddTask = () => {
     );
 };
 
+export default AddTask;

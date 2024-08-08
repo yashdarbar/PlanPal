@@ -3,7 +3,7 @@
 import axios from 'axios';
 import React from 'react'
 
-const Tassk = ({task, key}) => {
+const Task = ({task, key}) => {
 
   // const deleteHandler = () => {
 
@@ -44,4 +44,4 @@ const Tassk = ({task, key}) => {
   )
 }
 
-export default Tassk
+export default Task;
