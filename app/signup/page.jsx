@@ -20,7 +20,7 @@ const Signup = () => {
         } else {
             setAsDisable(true);
         }
-    }, []);
+    }, [user.username.length, user.email.length, user.password.length]);
 
     const onSignup = async () => {
         try {
