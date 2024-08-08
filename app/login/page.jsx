@@ -42,7 +42,7 @@ const Login = () => {
                         email
                     </label>
                     <input
-                        className="rounded-lg p-1 pl-2 m-1"
+                        className="rounded-lg p-1 pl-2 m-1 text-black"
                         type="email"
                         name="email"
                         placeholder="email"
@@ -55,7 +55,7 @@ const Login = () => {
                         password
                     </label>
                     <input
-                        className="rounded-lg p-1 pl-2 m-1"
+                        className="rounded-lg p-1 pl-2 m-1 text-black"
                         type="password"
                         name="password"
                         placeholder="password"

@@ -35,7 +35,7 @@ const AddTask = () => {
                         title
                     </label>
                     <input
-                        className="rounded-lg p-1 pl-2 m-1"
+                        className="rounded-lg p-1 pl-2 m-1 text-black"
                         type="title"
                         name="title"
                         placeholder="title"
@@ -49,7 +49,7 @@ const AddTask = () => {
                     </label>
                     <textarea
                         rows={4}
-                        className="rounded-lg p-1 pl-2 m-1"
+                        className="rounded-lg p-1 pl-2 m-1 text-black"
                         name="body"
                         placeholder="body"
                         value={task.body}

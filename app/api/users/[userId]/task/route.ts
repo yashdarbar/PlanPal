@@ -11,9 +11,9 @@ export const GET = async (
     { params }: { params: { userId: string } }
 ) => {
     const { userId } = params;
-
+    console.log("iii", userId);
     try {
-        const tasks = await Task.find({ _id:userId });
+        const tasks = await Task.find({ userId });
         return NextResponse.json(tasks);
     } catch (error) {
         // Log the error for debugging purposes

@@ -36,12 +36,12 @@ const Signup = () => {
         <div className="flex flex-col justify-center items-center min-h-screen text-lg">
             <h1 className="font-semibold text-lg sm:text-xl">SignUp!</h1>
             <hr />
-            <form className="flex flex-col " onSubmit={onSignup}>
+            <form className="flex flex-col text-balance " onSubmit={onSignup}>
                 <label htmlFor="username" className="pl-2 mt-2">
                     username
                 </label>
                 <input
-                    className="rounded-lg p-1 pl-2 m-1"
+                    className="rounded-lg p-1 pl-2 m-1 text-black"
                     type="username"
                     name="username"
                     placeholder="username"
@@ -54,7 +54,7 @@ const Signup = () => {
                     email
                 </label>
                 <input
-                    className="rounded-lg p-1 pl-2 m-1"
+                    className="rounded-lg p-1 pl-2 m-1 text-black"
                     type="email"
                     name="email"
                     placeholder="email"
@@ -67,7 +67,7 @@ const Signup = () => {
                     password
                 </label>
                 <input
-                    className="rounded-lg p-1 pl-2 m-1"
+                    className="rounded-lg p-1 pl-2 m-1 text-black"
                     type="password"
                     ame="password"
                     placeholder="password"

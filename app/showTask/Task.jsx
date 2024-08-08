@@ -5,10 +5,6 @@ import React from 'react'
 
 const Task = ({task, key}) => {
 
-  // const deleteHandler = () => {
-
-  // }
-
   const onDeleteTask = async (taskId) => {
       //e.preventDefault();
       //;
