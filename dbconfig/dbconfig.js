@@ -1,4 +1,22 @@
-import mongoose from "mongoose";
+import * as mongoose from "mongoose";
+
+export async function connectDB() {
+    try {
+        if (!process.env.MONGODB_URI) {
+            console.log("something wrong with the mongodb URI");
+            return;
+        }
+        await mongoose.connect(process.env.MONGODB_URI);
+        mongoose.connection.on("connected", () => {
+            console.log("connection is connected");
+        });
+        mongoose.connection.on("error", (err) => {
+            console.log("connection is not established", err);
+        });
+    } catch (error) {
+        console.error(error);
+    }
+}
 // export async function connectDB() {
 //     try {
 //         if (!process.env.MONGODB_URI) {
@@ -22,21 +40,3 @@ import mongoose from "mongoose";
 //         console.error("Connection error", error);
 //     }
 // }
-
-export async function connectDB() {
-    try {
-        if (!process.env.MONGODB_URI) {
-            console.log("something wrong with the mongodb URI");
-            return;
-        }
-        await mongoose.connect(process.env.MONGODB_URI);
-        mongoose.connection.on("connected", () => {
-            console.log("connection is connected");
-        });
-        mongoose.connection.on("error", (err) => {
-            console.log("connection is not established", err);
-        });
-    } catch (error) {
-        console.error(error);
-    }
-}
