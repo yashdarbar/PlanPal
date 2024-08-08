@@ -33,7 +33,7 @@ const ShowTask = () => {
             <div className="flex flex-col mx-auto text-center w-fit  bg-black text-black mt-8">
                 {tasks.length > 0 ? (tasks.map((task) => (
                     <Task task={task} key={task.id}></Task>
-                ))) : (<p>No tasks found.</p>)}
+                ))) : (<p className="text-white font-semibold ">No tasks found.</p>)}
             </div>
         </div>
 
