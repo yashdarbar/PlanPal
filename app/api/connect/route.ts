@@ -11,7 +11,7 @@ export async function GET(req: NextRequest, _id: string) {
     }
     try {
         const getToken = req.cookies.get("token")?.value;
-        //console.log("ddd", getToken);
+
         if (!getToken) {
             throw new Error("Token not found in cookies.");
         }
@@ -32,9 +32,9 @@ export async function GET(req: NextRequest, _id: string) {
         //console.log("User", user);
         return NextResponse.json(user.toObject());
 
-    } catch (error: any) {
-        console.error("Error:", error);
-        return NextResponse.json({ error: error.message }, { status: 404 });
+    } catch (error) {
+        console.error("[API_CONNECT_ERROR]", error);
+        return new NextResponse("Internal Error", { status: 500 });
     }
 }
 

@@ -17,11 +17,11 @@ const AddTask = () => {
 
     const onAddTask = async (e) => {
         e.preventDefault();
+        //console.log("task edede", task);
         try {
-            const response = await axios.post("/api/users/addTask", task);
-            console.log("successful", response.data);
+            await axios.post("/api/users/addTask", task);
         } catch (error) {
-            console.log({ message: " failed", error: error });
+            console.log({ message: "failed", error: error });
         }
     };
 

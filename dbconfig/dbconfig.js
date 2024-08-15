@@ -1,6 +1,8 @@
 import * as mongoose from "mongoose";
 
 export async function connectDB() {
+    "use server";
+
     try {
         if (!process.env.MONGODB_URI) {
             console.log("something wrong with the mongodb URI");
@@ -17,6 +19,8 @@ export async function connectDB() {
         console.error(error);
     }
 }
+
+export const runtime = "edge";
 // export async function connectDB() {
 //     try {
 //         if (!process.env.MONGODB_URI) {

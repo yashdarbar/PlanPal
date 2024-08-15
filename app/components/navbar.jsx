@@ -20,7 +20,7 @@ export const Navbar = () => {
     }
 
     return (
-        <div className="min-h-full w-full">
+        <div className="h-[100px] w-full">
             <div>
                 <nav className="flex justify-between mx-4 my-2 font-semibold">
                     <div className="text-xl sm:text-2xl md:text-3xl sm:ml-10 my-3">

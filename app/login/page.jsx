@@ -8,7 +8,7 @@ import UserContext from "@/context/userContext";
 const Login = () => {
     const router = useRouter();
     const [userl, setUserl] = useState({ email: "", password: "" });
-    const { user, setUser} = useContext(UserContext);
+    const { user, setUser } = useContext(UserContext);
     const [disabled, setAsDisable] = useState(false);
 
     useEffect(() => {
@@ -23,8 +23,9 @@ const Login = () => {
         e.preventDefault();
         try {
             const response = await axios.post("/api/users/login", userl);
-            console.log(response.data);
             setUser(response.data);
+           // console.log("resopndata", response.data);
+            //router.refresh();
             router.push("/addTask");
         } catch (error) {
             console.error(error);
@@ -34,7 +35,7 @@ const Login = () => {
 
     return (
         <div>
-            <div className="flex flex-col justify-center items-center min-h-screen text-lg">
+            <div className="flex flex-col justify-center items-center mt-80 text-lg">
                 <h1 className="font-semibold text-lg sm:text-xl">Login!</h1>
                 <hr />
                 <form className="flex flex-col" onSubmit={onLogin}>

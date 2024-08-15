@@ -9,19 +9,20 @@ connectDB();
 
 export async function POST(req: NextRequest, _id: string) {
     try {
+
         const reqbody = await req.json();
         const { email, password } = reqbody;
         //console.log(reqbody);
 
         const user = await User.findOne({ email });
         if (!user) {
-            return NextResponse.json("User not found");
+            return new NextResponse("User not found", { status: 404});
         }
         //console.log("user exists", user);
 
         const validPassword = await bcryptjs.compare(password, user.password);
         if (!validPassword) {
-            return NextResponse.json("Password is incorrect");
+            return new NextResponse("Password is incorrect", { status: 401});
         }
 
         const tokenData = {
@@ -34,6 +35,7 @@ export async function POST(req: NextRequest, _id: string) {
         const token = jwt.sign(tokenData, process.env.TOKEN!, {
             expiresIn: "1d",
         });
+        //console.log("token created", token);
 
         const response = NextResponse.json({
             message: "Login is successful",
@@ -41,9 +43,11 @@ export async function POST(req: NextRequest, _id: string) {
             user: user,
         });
         response.cookies.set("token", token, { httpOnly: true });
-        return response;
+        console.log("token updated", response);
+        return NextResponse.json(response);
+
     } catch (error: any) {
         console.log(error);
-        return NextResponse.json({ error: error.message }, { status: 404 });
+        return new NextResponse("[LOGIN_ERROR]", { status: 404 });
     }
 }
