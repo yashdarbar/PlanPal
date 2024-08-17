@@ -13,7 +13,7 @@ const ShowTask = () => {
     const getTask = async (userId) => {
         try {
             const response = await axios.get(`/api/users/${userId}/task`);
-            console.log("resssppnn", response.data);
+            //console.log("resssppnn", response.data);
             setTasks([...response.data].reverse());
 
         } catch (error) {

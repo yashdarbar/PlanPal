@@ -12,7 +12,7 @@ export async function POST(req: NextRequest) {
     }
 
     const value = req.cookies.get("token")?.value!;
-    console.log("value",value);
+    //console.log("value",value);
     const data = jwt.verify(value, process.env.TOKEN! as Secret) as CustomJwtPayload;
 
     try {

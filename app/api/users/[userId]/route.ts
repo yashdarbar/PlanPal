@@ -6,7 +6,6 @@ export async function GET(
     request: Request,
     { params }: { params: { userId: string } }
 ) {
-    //await connectDB();
 
     try {
         await connectDB();
@@ -27,36 +26,4 @@ export async function GET(
     }
 }
 
-// import { connectDB } from "@/dbconfig/dbconfig";
-// import User from "@/models/userModels";
-// import { NextApiRequest, NextApiResponse } from "next";
-// import { NextResponse } from "next/server";
-
-// connectDB();
-
-// export const dynamic = "auto";
-
-// export const GET = async (
-//     request: Request,
-//     { params }: { params: { userId: string } }
-// ) => {
-//     const { userId } = params;
-//     console.log("lllljfl", userId);
-//     try {
-//         const user = await User.findById({ _id: userId });
-//         return NextResponse.json(user);
-//     } catch (error) {
-//         // Log the error for debugging purposes
-//         console.error("Error fetching user:", error);
-
-//         // Create a more descriptive error object
-//         const errorResponse = {
-//             message: "Failed to fetch user",
-//             details: error instanceof Error ? error.message : "Unknown error",
-//         };
-
-//         return NextResponse.json(errorResponse, { status: 500 });
-//     }
-// };
-
-// export const runtime = "edge";
+// 

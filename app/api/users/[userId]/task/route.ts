@@ -11,7 +11,7 @@ export const GET = async (
     { params }: { params: { userId: string } }
 ) => {
     const { userId } = params;
-    console.log("iii", userId);
+    //console.log("iii", userId);
     if (!userId) {
         return new NextResponse("Unauthorized", { status: 401 });
     }
@@ -21,36 +21,7 @@ export const GET = async (
     } catch (error) {
         // Log the error for debugging purposes
         console.error("Error fetching tasks:", error);
-
-        // Create a more descriptive error object
-        // const errorResponse = {
-        //     message: "Failed to fetch tasks",
-        //     details: error instanceof Error ? error.message : "Unknown error",
-        // };
-
         return new NextResponse("Internal Error", { status: 500 });
     }
 };
 
-//export const runtime = "edge";
-
-// connectDB();
-
-// export const dynamic = "force-dynamic";
-
-// export default async function GET(
-//     request: Request,
-//     { params }: { params: { userId: string } }
-// ) {
-//     const { userId } = params;
-//     let tasks = [];
-//     try {
-//         tasks = await Task.find({ userId: userId });
-//         return NextResponse.json(tasks);
-//     } catch (error: any) {
-//         return NextResponse.json({
-//             error: error.message,
-//             status: error.status,
-//         });
-//     }
-// }
