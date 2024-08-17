@@ -3,6 +3,7 @@
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
+import toast from "react-hot-toast";
 
 const Signup = () => {
     const router = useRouter();
@@ -25,9 +26,11 @@ const Signup = () => {
     const onSignup = async () => {
         try {
             const response = await axios.post("/api/users/signup", user);
-            console.log("signup successful", response.data);
+            //console.log("signup successful", response.data);
+            toast.success("Signup successful");
             router.push("/login");
         } catch (error) {
+            toast.error("Something went wrong");
             console.log({ message: "signup failed", error: error });
         }
     };

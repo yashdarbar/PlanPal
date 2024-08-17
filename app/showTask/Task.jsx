@@ -3,6 +3,7 @@
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import React from "react";
+import toast from "react-hot-toast";
 
 const Task = ({ task, key }) => {
     const router = useRouter();
@@ -10,8 +11,10 @@ const Task = ({ task, key }) => {
     const onDeleteTask = async (taskId) => {
       try {
           await axios.delete(`/api/users/addTask/${taskId}`);
+          toast.success("Task deleted successfully");
           router.refresh();
       } catch (error) {
+        toast.error("Something went wrong");
         console.log("Failed to delete task", error);
       }
     }

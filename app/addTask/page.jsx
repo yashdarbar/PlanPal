@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import toast from "react-hot-toast";
 
 const AddTask = () => {
     const [task, setTask] = useState({ title: "", body: "" });
@@ -20,8 +21,10 @@ const AddTask = () => {
         //console.log("task edede", task);
         try {
             await axios.post("/api/users/addTask", task);
+            toast.success("Task added successfully");
         } catch (error) {
             console.log({ message: "failed", error: error });
+            toast.error("Something went wrong");
         }
     };
 

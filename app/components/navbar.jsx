@@ -5,6 +5,7 @@ import { useContext } from "react";
 import UserContext from "@/context/userContext";
 import axios from "axios";
 import { useRouter } from "next/navigation";
+import toast from "react-hot-toast";
 
 export const Navbar = () => {
     const router = useRouter()
@@ -13,8 +14,10 @@ export const Navbar = () => {
     const logout = async () => {
         try {
             await axios.get("/api/users/logout");
+            toast.success("Successfully logged out");
             router.push("/login");
         } catch (error) {
+            toast.error("Failed to logout");
             console.log(error);
         }
     }

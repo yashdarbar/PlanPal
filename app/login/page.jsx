@@ -4,6 +4,7 @@ import axios from "axios";
 import { useRouter } from "next/navigation";
 import { useContext, useEffect, useState } from "react";
 import UserContext from "@/context/userContext";
+import toast from "react-hot-toast";
 
 const Login = () => {
     const router = useRouter();
@@ -24,12 +25,13 @@ const Login = () => {
         try {
             const response = await axios.post("/api/users/login", userl);
             setUser(response.data);
+            toast.success("User successfully logged in");
            // console.log("resopndata", response.data);
             //router.refresh();
             router.push("/addTask");
         } catch (error) {
-            console.error(error);
-            console.log("login is failed");
+            toast.error("Login failed");
+            console.log("login is failed", error);
         }
     };
 
