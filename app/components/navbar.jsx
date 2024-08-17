@@ -16,6 +16,7 @@ export const Navbar = () => {
             await axios.get("/api/users/logout");
             toast.success("Successfully logged out");
             router.push("/login");
+            router.refresh(Navbar);
         } catch (error) {
             toast.error("Failed to logout");
             console.log(error);

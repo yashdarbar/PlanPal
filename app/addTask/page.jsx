@@ -17,10 +17,11 @@ const AddTask = () => {
     }, [task]);
 
     const onAddTask = async (e) => {
-        e.preventDefault();
+
         //console.log("task edede", task);
         try {
             await axios.post("/api/users/addTask", task);
+            e.preventDefault();
             toast.success("Task added successfully");
         } catch (error) {
             console.log({ message: "failed", error: error });
@@ -30,7 +31,7 @@ const AddTask = () => {
 
     return (
         <div>
-            <div className="flex flex-col justify-center items-center min-h-screen text-lg ">
+            <div className="flex flex-col justify-center items-center text-lg ">
                 <h1 className="font-semibold">Task!</h1>
                 <hr />
                 <div className="flex flex-col w-2/3 sm:w-3/5 md:w-2/6">

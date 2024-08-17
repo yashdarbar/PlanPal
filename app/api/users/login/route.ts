@@ -44,7 +44,7 @@ export async function POST(req: NextRequest, _id: string) {
         });
         response.cookies.set("token", token, { httpOnly: true });
         console.log("token updated", response);
-        return NextResponse.json(response);
+        return response;
 
     } catch (error: any) {
         console.log(error);

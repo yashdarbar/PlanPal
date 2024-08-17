@@ -9,15 +9,15 @@ const Task = ({ task, key }) => {
     const router = useRouter();
 
     const onDeleteTask = async (taskId) => {
-      try {
-          await axios.delete(`/api/users/addTask/${taskId}`);
-          toast.success("Task deleted successfully");
-          router.refresh();
-      } catch (error) {
-        toast.error("Something went wrong");
-        console.log("Failed to delete task", error);
-      }
-    }
+        try {
+            await axios.delete(`/api/users/addTask/${taskId}`);
+            router.refresh();
+            toast.success("Task deleted successfully");
+        } catch (error) {
+            toast.error("Something went wrong");
+            console.log("Failed to delete task", error);
+        }
+    };
 
     return (
         <div>

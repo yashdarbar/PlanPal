@@ -30,14 +30,24 @@ const ShowTask = () => {
 
     return (
         <div className="mt-10">
-            <h1 className="text-center text-2xl sm:text-3xl font-semibold">Tasks</h1>
+            <h1 className="text-center text-2xl sm:text-3xl font-semibold">
+                Tasks
+            </h1>
             <div className="flex flex-col mx-auto text-center w-fit  bg-black text-black mt-8">
-                {tasks.length > 0 ? (tasks.map((task) => (
-                    <Task task={task} key={task.id}></Task>
-                ))) : (<p className="text-white font-semibold ">No tasks found.</p>)}
+                {tasks.length > 0 ? (
+                    tasks.map((task) => <Task task={task} key={task.id}></Task>)
+                ) : (
+                    <>
+                        <p className="text-white text-xl font-semibold">
+                            No tasks found.
+                        </p>
+                        <p className="text-slate-300 text-base font-semibold mt-60">
+                            If you have saved task and it&apos;s not showing please refresh the page.
+                        </p>
+                    </>
+                )}
             </div>
         </div>
-
     );
 };
 
