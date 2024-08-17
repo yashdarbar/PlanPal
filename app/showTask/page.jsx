@@ -13,6 +13,7 @@ const ShowTask = () => {
     const getTask = async (userId) => {
         try {
             const response = await axios.get(`/api/users/${userId}/task`);
+            console.log("resssppnn", response.data);
             setTasks([...response.data].reverse());
 
         } catch (error) {
@@ -23,7 +24,7 @@ const ShowTask = () => {
     useEffect(() => {
         if (user) {
             getTask(user);
-            console.log(user);
+            //console.log("user", user);
         }
     }, [user]);
 

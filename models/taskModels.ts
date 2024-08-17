@@ -1,14 +1,10 @@
 import mongoose, { Document, Schema } from "mongoose";
 
-// Define an interface for the Task document
-// interface ITask extends Document {
-//     title: string;
-//     body: string;
-//     userId: mongoose.Types.ObjectId;
-//     createdAt?: Date;
-// }
+interface ITask extends Document {
+    title: string;
+    body: string;
+}
 
-// Define the schema
 const TaskSchema: Schema = new Schema({
     title: {
         type: String,
@@ -29,9 +25,19 @@ const TaskSchema: Schema = new Schema({
     },
 });
 
-const Task = mongoose.model("Task", TaskSchema);
+const Task = mongoose.models.Task || mongoose.model<ITask>("Task", TaskSchema);
 
 export default Task;
+
+// Define an interface for the Task document
+// interface ITask extends Document {
+//     title: string;
+//     body: string;
+//     userId: mongoose.Types.ObjectId;
+//     createdAt?: Date;
+// }
+
+// Define the schema
 
 // import mongoose from "mongoose";
 

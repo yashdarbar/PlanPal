@@ -1,43 +1,41 @@
-"use client"
+"use client";
 
-import axios from 'axios';
-import React from 'react'
+import axios from "axios";
+import { useRouter } from "next/navigation";
+import React from "react";
 
-const Task = ({task, key}) => {
+const Task = ({ task, key }) => {
+    const router = useRouter();
 
-  const onDeleteTask = async (taskId) => {
-      //e.preventDefault();
-      //;
-      //console.log("a;lskdjfalsd", taskId);
+    const onDeleteTask = async (taskId) => {
       try {
-          const response = await axios.delete(`/api/users/addTask/${taskId}`);
-          console.log("successful", response.data);
-          //router.push("/home");
+          await axios.delete(`/api/users/addTask/${taskId}`);
+          router.refresh();
       } catch (error) {
-          console.log({ message: " failed", error: error });
+        console.log("Failed to delete task", error);
       }
-  };
+    }
 
-
-
-  return (
-    // <div className=' m-4 flex '>
-    //   <div key={key} className='m-auto justify-center  flex flex-col w-3/5'>
-    //     <h1>{task.title}</h1>
-    //   {/* <h1>{task.title}eheh</h1>
-    //     <p>{task.body}</p> */}
-    //     {/* <h1 className='flex justify-center text-2xl font-bold'>Titel</h1>
-    //     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum eius sit eaque minima qs.</p> */}
-    //   </div>
-    // </div>
-    <div>
-      <div key={key} className=' bg-white flex flex-col mb-2 border-4 border-gray rounded-xl py-3 px-2 w-80 sm:w-96'>
-        <h1 className='font-bold text-xl'>{task.title}</h1>
-        <p className='text-lg '>{task.body}</p>
-        <button className='bg-black w-fit text-white px-2 py-1 rounded-lg mt-2 m-auto' onClick={()=>{onDeleteTask(task._id)}}>Delete</button>
-      </div>
-    </div>
-  )
-}
+    return (
+        <div>
+            <div
+                key={key}
+                className=" bg-white flex flex-col mb-2 border-4 border-gray rounded-xl py-3 px-2 w-80 sm:w-96"
+            >
+                <h1 className="font-bold text-xl">{task.title}</h1>
+                <p className="text-lg ">{task.body}</p>
+                <button
+                    type="submit"
+                    className="bg-black w-fit text-white px-2 py-1 rounded-lg mt-2 m-auto"
+                    onClick={() => {
+                        onDeleteTask(task._id);
+                    }}
+                >
+                    Delete
+                </button>
+            </div>
+        </div>
+    );
+};
 
 export default Task;

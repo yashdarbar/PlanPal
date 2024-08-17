@@ -12,6 +12,9 @@ export const GET = async (
 ) => {
     const { userId } = params;
     console.log("iii", userId);
+    if (!userId) {
+        return new NextResponse("Unauthorized", { status: 401 });
+    }
     try {
         const tasks = await Task.find({ userId });
         return NextResponse.json(tasks);
@@ -20,16 +23,16 @@ export const GET = async (
         console.error("Error fetching tasks:", error);
 
         // Create a more descriptive error object
-        const errorResponse = {
-            message: "Failed to fetch tasks",
-            details: error instanceof Error ? error.message : "Unknown error",
-        };
+        // const errorResponse = {
+        //     message: "Failed to fetch tasks",
+        //     details: error instanceof Error ? error.message : "Unknown error",
+        // };
 
-        return NextResponse.json(errorResponse, { status: 500 });
+        return new NextResponse("Internal Error", { status: 500 });
     }
 };
 
-export const runtime = "edge";
+//export const runtime = "edge";
 
 // connectDB();
 
